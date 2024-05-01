@@ -19,7 +19,7 @@ const Hero = () => {
               Discover the <br /> BestGames on <br /> GamesHub
             </h1>
             <p className="text-[24px]  md:text-[18px] tracking-wide">
-              Welcome to GamesHub, your <br /> ultimate destination for gaming
+              Welcome to GameHub, your <br /> ultimate destination for gaming
             </p>
             <Button className="mt-5 animate-pulse">Watch Trailer Now</Button>
           </div>
