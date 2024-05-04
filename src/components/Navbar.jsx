@@ -24,7 +24,6 @@ const Navbar = () => {
                   to={item.href}
                   key={item.href}
                   className={({ isActive }) => {
-                    console.log(item.href, isActive);
                     return (
                       "font-marcellus text-[18px] rounded-2xl px-3 py-2 no-underline" +
                       (isActive ? " text-white bg-gray-700" : "bg-gray-500")
@@ -59,7 +58,7 @@ const Navbar = () => {
                   className="invert object-contain"
                 />
               </MenuHandler>
-              <MenuList>
+              <MenuList className="outline-none  ">
                 <Input
                   label="Search"
                   containerProps={{
@@ -67,26 +66,27 @@ const Navbar = () => {
                   }}
                 />
                 {navLinks.map((item) => (
-                  <div className="cursor-pointer">
-                    <NavLink
-                      to={item.href}
-                      key={item.href}
-                      className={({ isActive }) => {
-                        console.log(item.href, isActive);
-                        return (
-                          "font-marcellus rounded-xl text-[18px] block  px-3 py-2 no-underline mt-2" +
-                          (isActive ? " text-white bg-gray-700" : "bg-gray-500")
-                        );
-                        // console.log(item.href + " " + isActive);
-                      }}
-                    >
-                      {item.label}
-                    </NavLink>
-                  </div>
+                  <NavLink
+                    to={item.href}
+                    key={item.href}
+                    className={({ isActive }) => {
+                      return (
+                        "font-marcellus rounded-xl text-[18px] p-2 flex flex-col mt-2 outline-none  " +
+                        (isActive ? " text-white bg-gray-700" : "")
+                      );
+                      // console.log(item.href + " " + isActive);
+                    }}
+                  >
+                    {item.label}
+                  </NavLink>
                 ))}
-                <Link to="/register">
-                  <MenuItem className=" flex items-center  justify-center bg-black font-marcellus rounded-xl text-[18px] text-white mt-2">Sign Up</MenuItem>
-                </Link>
+
+                <NavLink
+                  className="bg-black flex items-center justify-center font-marcellus rounded-xl p-2 text-[18px] text-white mt-2"
+                  to="/register"
+                >
+                  Sign Up
+                </NavLink>
               </MenuList>
             </Menu>
           </div>
