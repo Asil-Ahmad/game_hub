@@ -5,8 +5,9 @@ import { Typography, Button } from "@material-tailwind/react";
 
 const PaidGames = () => {
   const [like, setLike] = useState("");
-  const liked = () => {
-    setLike("text-red-500");
+  const liked = (id) => {
+    localStorage.setItem("Favorite Game", JSON.stringify(id));
+    console.log(window.localStorage);
   };
   return (
     <div className="">
@@ -21,7 +22,7 @@ const PaidGames = () => {
               />
               <span
                 className={`absolute bottom-0 right-0 p-2 text-3xl ${like}`}
-                onClick={liked}
+                onClick={() => liked(item.id)}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

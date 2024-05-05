@@ -18,16 +18,16 @@ const ImageGallery = ({ setActive }) => {
     (result) => result.id.toString() === id
   );
   return (
-    <div className="">
+    <div className="flex flex-wrap">
       {filteredResults?.map((result) => (
-        <div className="flex gap-4 items-center justify-evenly ">
+        <div className="flex gap-4 items-center flex-wrap justify-evenly ">
           {result?.short_screenshots.map((img) => (
-            <div className="w-full flex items-center justify-center object-contain hover:scale-110">
+            <div className="  hover:scale-110">
               <img
                 onClick={() => setActive(img.image)}
                 src={img.image}
                 alt="image 1"
-                className="rounded-[2rem] h-40 w-full max-w-full object-cover object-center"
+                className=""
               />
             </div>
           ))}

@@ -31,66 +31,57 @@ const GameInformation = () => {
     );
   }
   return (
-    <section className="w-full min-h-screen flex items-start ">
-      <div className=" flex w-full flex-col mt-[4rem] max-container  bg-gradient-to-t from-gray-700"  >
-        <img src={data.background_image} alt="" />
-        <div className=" p-4 flex flex-row justify-evenly items-center object-contain  ">
+    <section
+      style={{ "--image-url": `url(${active})` }}
+      className=" transition duration-300 bg-[image:var(--image-url)] bg-cover bg-center min-h-screen
+        w-full flex items-center justify-center  "
+    >
+      <div className="w-3/4 flex flex-col items-start justify-center">
+        {/* <div className=" flex w-full justify-center items-center ">
+          <img
+            src={active}
+            alt="image 1"
+            className=" rounded-[2rem]  object-cover object-center "
+          />
+        </div> */}
+
+        <div className="mt-10 flex justify-start items-center object-contain gap-2">
           <img
             src={data.background_image}
             alt=""
-            className="size-[7rem] object-cover object-center rounded-2xl
-           
-            "
+            className="box-content  h-[10rem] w-[10rem] rounded-[2rem] object-cover "
           />
-          <div>
-            <Typography variant="h6" color="white" className="font-[600]">
+          <div className=" w-full flex flex-col items-start gap-3 p-2">
+            <Typography variant="h5" color="white">
               {data.name}
             </Typography>
-
-            <Typography color="gray" className="font-normal">
+            <Typography color="gray" className="mt-2 font-normal">
               <div className="flex items-center justify-center gap-2 font-bold text-white">
                 <Rating value={Math.trunc(data.rating)} readonly />
                 {Math.floor(data.rating * 10) / 10}
               </div>
             </Typography>
-
-            <button className="flex flex-row items-center gap-1 bg-gray-400 rounded-sm px-2  text-[12px] font-semibold mt-2 ">
-              <span className="animate-ping">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="#d11b1b"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke=""
-                  class="w-2 h-2 "
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.983 8.983 0 0 1 3.361-6.867 8.21 8.21 0 0 0 3 2.48Z"
-                  />
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M12 18a3.75 3.75 0 0 0 .495-7.468 5.99 5.99 0 0 0-1.925 3.547 5.975 5.975 0 0 1-2.133-1.001A3.75 3.75 0 0 0 12 18Z"
-                  />
-                </svg>
-              </span>
-              {data.added_by_status.playing} Live
-            </button>
+            <Typography variant="h6" color="white">
+              {data.genres.map((genre) => (
+                <Link>{genre.name} </Link>
+              ))}
+            </Typography>
           </div>
         </div>
-        <div className="p-4 ">
+        <div className="mt-5">
           <Typography variant="h5" color="white">
             Screenshots
           </Typography>
           <div className="mt-5 ">
-            <ImageGallery/>
+            <ImageGallery setActive={setActive} />
           </div>
           <div className="mt-5">
             <Typography variant="h5" color="white">
               Game Description
             </Typography>
+            <div className="mt-5">
+              <GameDescription />
+            </div>
           </div>
         </div>
       </div>

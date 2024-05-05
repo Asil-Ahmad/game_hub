@@ -25,8 +25,8 @@ const Navbar = () => {
                   key={item.href}
                   className={({ isActive }) => {
                     return (
-                      "font-marcellus text-[18px] rounded-2xl px-3 py-2 no-underline" +
-                      (isActive ? " text-white bg-gray-700" : "bg-gray-500")
+                      "font-marcellus transition hover:scale-125 text-[18px] rounded-2xl px-3 py-2 no-underline" +
+                      (isActive ? " text-white bg-gray-700 scale-125" : "bg-gray-500")
                     );
                     // console.log(item.href + " " + isActive);
                   }}
@@ -55,10 +55,10 @@ const Navbar = () => {
                   alt=""
                   width={25}
                   height={25}
-                  className="invert object-contain"
+                  className="invert object-contain "
                 />
               </MenuHandler>
-              <MenuList className="outline-none  ">
+              <MenuList className="outline-none   ">
                 <Input
                   label="Search"
                   containerProps={{
@@ -71,8 +71,8 @@ const Navbar = () => {
                     key={item.href}
                     className={({ isActive }) => {
                       return (
-                        "font-marcellus rounded-xl text-[18px] p-2 flex flex-col mt-2 outline-none  " +
-                        (isActive ? " text-white bg-gray-700" : "")
+                        "font-marcellus  rounded-xl text-[18px] p-2 flex flex-col mt-2 outline-none  " +
+                        (isActive ? "  text-white bg-gray-700" : "")
                       );
                       // console.log(item.href + " " + isActive);
                     }}
