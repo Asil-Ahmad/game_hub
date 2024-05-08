@@ -13,9 +13,11 @@ import play from "./play.svg";
 import peakpx from "../icons/peakpx.jpg";
 import trailer from "../icons/trailer.png";
 import aslogo from "../icons/aslogo.png";
+import video from "../icons/videoPlay.mp4";
 
 export {
   hamburger,
+  video,
   Logo,
   logo,
   aslogo,

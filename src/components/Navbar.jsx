@@ -25,7 +25,7 @@ const Navbar = () => {
                   key={item.href}
                   className={({ isActive }) => {
                     return (
-                      "font-marcellus transition hover:scale-125 text-[18px] rounded-2xl px-3 py-2 no-underline" +
+                      "font-marcellus transition hover:scale-125 text-[18px] rounded-2xl px-2 no-underline" +
                       (isActive ? " text-white bg-gray-700 scale-125" : "bg-gray-500")
                     );
                     // console.log(item.href + " " + isActive);

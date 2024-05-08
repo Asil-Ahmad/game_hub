@@ -1,5 +1,5 @@
 import React from "react";
-// import { videoPlay } from "../../assets/icons";
+import { video } from "../../assets/icons";
 
 const Video = () => {
   return (
@@ -8,9 +8,8 @@ const Video = () => {
         autoplay="autoplay"
         muted="muted"
         loop
-        
         className="w-full  z-10 flex"
-        src=""
+        src={video}
       ></video>
     </section>
   );
