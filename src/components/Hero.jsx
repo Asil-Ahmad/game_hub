@@ -2,6 +2,7 @@ import React from "react";
 import { ascover } from "../assets/games";
 import { aslogo } from "../assets/icons";
 import { Button } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 const Hero = () => {
   return (
     <>
@@ -21,7 +22,9 @@ const Hero = () => {
             <p className="text-[24px]  md:text-[18px] tracking-wide">
               Welcome to GameHub, your <br /> ultimate destination for gaming
             </p>
-            <Button className="mt-5 animate-pulse">Watch Trailer Now</Button>
+            <Link to="https://www.youtube.com/watch?v=x55lAlFtXmw&t=1s">
+              <Button className="mt-5 animate-pulse">Watch Trailer Now</Button>
+            </Link>
           </div>
           <div className="mt-5 ">
             <img

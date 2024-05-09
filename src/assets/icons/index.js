@@ -10,14 +10,18 @@ import Logo from "./Logo.svg";
 import logo from "./logo.png";
 import close from "./close.svg";
 import play from "./play.svg";
+import Back from "./back.svg";
 import peakpx from "../icons/peakpx.jpg";
 import trailer from "../icons/trailer.png";
 import aslogo from "../icons/aslogo.png";
 import video from "../icons/videoPlay.mp4";
+import fire from "./fire.svg";
 
 export {
   hamburger,
   video,
+  fire,
+  Back,
   Logo,
   logo,
   aslogo,

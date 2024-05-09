@@ -6,7 +6,7 @@ const Activity = () => {
   const activities = [
     {
       id: 1,
-      activity: "Go ",
+      activity: "Go",
       description: "Explore local trails and enjoy the outdoors.",
     },
     {

@@ -12,50 +12,38 @@ import Products from "./components/Products/Products";
 import Trailer from "./components/Trailer/Trailer";
 
 import Video from "./components/Video/Video";
-
+import { useLocation } from "react-router-dom";
+import Smallbar from "./components/Smallbar";
 
 const App = () => {
+  const location = useLocation();
+  const showNavbar = ["/", "/games", "register", "/products"].includes(
+    location.pathname
+  );
+
+  const showSmallbar = ["/games/:id"].includes(location.pathname);
+
+  const Homepage = () => {
+    return (
+      <>
+        <Hero />
+        <Video />
+        <Trailer />
+      </>
+    );
+  };
+
   return (
     <main className="bg-black bg-cover min-h-screen  ">
-      <Navbar />
-
-      <section>
-        <Routes>
-          <Route path="/" element={<Hero />}></Route>
-        </Routes>
-      </section>
-
-      <section>
-        <Routes>
-          <Route path="/" element={<Video />}></Route>
-        </Routes>
-      </section>
-      <section>
-        <Routes>
-          <Route path="/" element={<Trailer />}></Route>
-        </Routes>
-      </section>
-
-      <section>
-        <Routes>
-          <Route path="/games" element={<Games />}></Route>
-        </Routes>
-      </section>
-      <section>
-        <Routes>
-          <Route path="/games/:id" element={<GameInformation />}></Route>
-        </Routes>
-      </section>
-      <section>
-        <Routes>
-          <Route path="/register" element={<Register />}></Route>
-        </Routes>
-      </section>
-      <section>
-        <Routes>
-          <Route path="/products" element={<Products />}></Route>
-        </Routes>
-      </section>
+      {showNavbar && <Navbar />}
+      {showSmallbar && <Smallbar />}
+      <Routes>
+        <Route path="/" element={<Homepage />}></Route>
+        <Route path="/games" element={<Games />}></Route>
+        <Route path="/register" element={<Register />}></Route>
+        <Route path="/products" element={<Products />}></Route>
+        <Route path="/games/:id" element={<GameInformation />}></Route>
+      </Routes>
     </main>
   );
 };

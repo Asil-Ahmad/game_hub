@@ -1,18 +1,21 @@
 import React from "react";
 import { navLinks } from "../constant";
 import { hamburger } from "../assets/icons";
-import { Typography } from "@material-tailwind/react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import {
   Menu,
   MenuHandler,
   MenuList,
-  MenuItem,
   Button,
   Input,
 } from "@material-tailwind/react";
 
 const Navbar = () => {
+  const location = useLocation();
+
+  if (location.pathname === "/games/:id") {
+    return null;
+  }
   return (
     <header className="absolute z-10 w-full">
       <nav className=" w-full flex bg-black/30    ">
@@ -26,7 +29,9 @@ const Navbar = () => {
                   className={({ isActive }) => {
                     return (
                       "font-marcellus transition hover:scale-125 text-[18px] rounded-2xl px-2 no-underline" +
-                      (isActive ? " text-white bg-gray-700 scale-125" : "bg-gray-500")
+                      (isActive
+                        ? " text-white bg-gray-700 scale-125"
+                        : "bg-gray-500")
                     );
                     // console.log(item.href + " " + isActive);
                   }}
