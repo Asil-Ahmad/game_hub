@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Trailer = () => {
   const [openVideo, setOpenVideo] = useState(false);
   return (
-    <section className="">
+    <>
       <div className="bg-[url('./assets/icons/trailer.png')] bg-cover bg-no-repeat min-h-[40rem] flex flex-col justify-center items-center">
         <img
           src={play}
@@ -49,7 +49,7 @@ const Trailer = () => {
           </button>
         </>
       )}
-    </section>
+    </>
   );
 };
 
