@@ -6,23 +6,13 @@ module.exports = withMT({
     "path-to-your-node_modules/@material-tailwind/react/components/**/*.{js,ts,jsx,tsx}",
     "path-to-your-node_modules/@material-tailwind/react/theme/components/**/*.{js,ts,jsx,tsx}",
   ],
-
+  //
   theme: {
-    extend: {
-      animation: {
-        fade: "fadeIn 4s ease-in-out",
-      },
-
-      keyframes: {
-        fadeIn: {
-          from: { opacity: 0 },
-          to: { opacity: 1 },
-        },
-      },
-    },
+    extend: {},
   },
 
-  plugins: [require("tailwind-scrollbar-hide")],
+  plugins: [require("tailwindcss-animated")],
+  darkMode: "class",
 
   theme: {
     screens: {
@@ -37,12 +27,11 @@ module.exports = withMT({
     fontFamily: {
       nunito: ["nunito", "sans-serif"],
       MyFont: ['"My Font"', "serif"],
-      marcellus: ["Marcellus", "serif"], // Ensure fonts with spaces have " " surrounding it.
+      marcellus: ["Marcellus", "serif"],
+      manrope: ["Manrope", "sans-serif"], // Ensure fonts with spaces have " " surrounding it.
     },
     colors: {
       "sand-yellow": "#48413C",
     },
-    
-    
   },
 });

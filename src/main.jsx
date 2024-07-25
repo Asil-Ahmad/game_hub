@@ -10,12 +10,15 @@ import store from "./app/store";
 import "./index.css";
 import { ThemeProvider } from "@material-tailwind/react";
 import App from "./App";
+import { UserProvider } from "./constant/UserDetails";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     <ThemeProvider>
       <BrowserRouter>
-        <App />
+        <UserProvider>
+          <App />
+        </UserProvider>
       </BrowserRouter>
     </ThemeProvider>
   </Provider>

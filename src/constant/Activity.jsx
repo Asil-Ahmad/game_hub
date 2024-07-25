@@ -62,7 +62,7 @@ const Activity = () => {
     <div className="flex items-center justify-start overflow-x-auto max-container mt-2 mb-[20px] w-full gap-2">
       {activities.map((item) => (
         <Link key={item.id}>
-          <Button className=" ">{item.activity}</Button>
+          <Button className=" bg-black ">{item.activity}</Button>
         </Link>
       ))}
     </div>

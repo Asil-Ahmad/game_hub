@@ -12,7 +12,7 @@ const PaidGames = () => {
   return (
     <div className="">
       {products.map((item) => (
-        <Link className="text-white w-full flex mt-4 items-center justify-between ">
+        <Link className="  dark:text-gray-900 text-blue-gray-100 w-full flex mt-4 items-center justify-between ">
           <div className=" flex items-center">
             <div className="relative">
               <img
@@ -41,14 +41,11 @@ const PaidGames = () => {
               </span>
             </div>
           </div>
-          <Typography
-            color="white"
-            className=" lg:text-3xl  font-[400] text-sm p-2 capitalize"
-          >
+          <Typography className=" lg:text-3xl   dark:text-gray-900 text-blue-gray-100  font-[400] text-sm p-2 capitalize">
             {item.label}
           </Typography>
-          <Link to={`/games/${item.id}`}>
-            <Button>GET</Button>
+          <Link to={`/products/cart`}>
+            <Button className=" bg-black"> ₹{item.price}</Button>
           </Link>
         </Link>
       ))}

@@ -3,7 +3,7 @@ import React from "react";
 
 const SubNavbar = () => {
   return (
-    <div className="pb-4 w-full bg-black  ">
+    <div className="max-container w-full bg-black  ">
       <div className="flex justify-between items-center ">
         <ul className=" flex flex-1 justify-evenly items-center gap-16 max-lg:hidden ">
           <a

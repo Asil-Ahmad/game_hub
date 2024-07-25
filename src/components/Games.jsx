@@ -1,28 +1,19 @@
-import { useState } from "react";
-import React from "react";
-
-import GamesCard from "./GamesCard/GamesCard";
-import { peakpx } from "../assets/icons";
-
-import { Swiper, SwiperSlide } from "swiper/react";
-
-import { Pagination } from "swiper/modules";
+import React, { useState, useEffect } from "react";
+import GamesCardApi from "./GamesCard/GamesCardApi";
+import Sidebar from "./Sidebar/Sidebar";
 
 const Games = () => {
-  const [active, setActive] = useState(peakpx);
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <section
-      style={{
-        "--image-url": `url(${active})`,
-        transition: "background 0.2s ease-in-out",
-      }}
-      className=" bg-[image:var(--image-url)] bg-cover bg-center min-h-screen
-      w-full flex items-center justify-center  "
+      className="relative bg-[url('./assets/icons/mainbackgrounddark.png')] bg-fill
+      w-full flex items-center justify-center"
     >
-      
-          <GamesCard setActive={setActive} />
-       
+      <Sidebar />
+
+      <GamesCardApi />
     </section>
   );
 };

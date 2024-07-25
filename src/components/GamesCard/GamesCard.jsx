@@ -1,133 +1,101 @@
-import { Typography, Button } from "@material-tailwind/react";
-
-import { Spinner } from "@material-tailwind/react";
-
-import { useGetGamesQuery } from "../../services/RAWG";
-import React from "react";
+import React, { useState } from "react";
+import { Button, Rating } from "@material-tailwind/react";
+import { Pc, cart, outlineheart, solidheart } from "../../assets/icons";
+import { pc, playstation, xbox } from "../../assets/platforms";
 import { Link } from "react-router-dom";
 
-const GamesCard = ({ setActive }) => {
-  const { data, isFetching } = useGetGamesQuery();
-  console.log("Game Data", data?.results);
+const GamesCard = ({ item, handleClick }) => {
+  const { id, imgURL, back, label, price, genre, rating, gamerslive, href } =
+    item;
 
-  if (isFetching) {
-    return (
-      <Spinner className=" w-full flex  justify-center text-gray-300/50" />
-    );
-  }
+  const [isGameFavorited, setIsGameFavorited] = useState(false);
+
+  const handleLike = (id) => {
+    // console.log("Like", id);
+    setIsGameFavorited((prevState) => ({
+      ...prevState,
+      [id]: !prevState[id],
+    }));
+  };
+
   return (
-    <div className=" glass w-full   ">
-      <div className="flex justify-start  overflow-x-auto max-container p-10  mb-10 w-full gap-4">
-        {data?.results?.map((item) => (
-          <Link to={`/games/${item.id}`}>
-            <div
-              className=" hover:scale-110 transition ease-in-out duration-300 p-2 w-[14.5rem] h-[23.5rem] flex flex-col items-center justify-start  bg-gray-800
-              hover:outline outline-offset-2 outline-[#0f0f0f]  rounded-2xl"
-            >
-              <img
-                src={item.background_image}
-                alt="profile-picture"
-                onPointerEnter={() => setActive(item.background_image)}
-                className="rounded-2xl  w-[13.5rem] h-[11.5rem] object-cover  object-center  "
-              />
-              <div className="w-full p-2">
-                <Typography
-                  className="font-marcellus text-blue-gray-100 text-start font-bold "
-                  variant="paragraph"
-                >
-                  {item.name}
-                </Typography>
-
-                <Typography
-                  variant="small"
-                  className="text-blue-gray-100 font-marcellus mt-1 "
-                >
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Adipisci dolore recusandae voluptate autem consectetur.
-                </Typography>
-                <div className="mt-4 animate-pulse">
-                  <Button size="sm">Explore</Button>
-                </div>
-              </div>
+    <>
+      <div
+        className=" hover:shadow-[0px_0px_1px_rgba(221,_221,_221,_1),_0_10px_20px_rgba(204,_204,_204,_1)]
+              hover:scale-110 transition ease-in-out duration-300  w-[324px] 
+                rounded-[20px] linerGradientCard font-manrope"
+      >
+        <Link to={href}>
+          <img
+            src={imgURL}
+            alt={label}
+            // onPointerEnter={() => setActive(item.background_image)}
+            className=" rounded-[20px] w-[324px] h-[266px] object-center object-cover  "
+          />
+        </Link>
+        <div className="py-[15px] px-[15px]">
+          <div id="console_heart" className="flex items-center justify-between">
+            <div className="flex items-baseline gap-2">
+              <img src={pc} alt="" width={20} title="PC" />
+              <img src={playstation} alt="" width={20} title="Playstation" />
+              <img src={xbox} alt="" width={20} title="XBox" />
             </div>
-          </Link>
-        ))}
+            <button onClick={() => handleLike(item.id)}>
+              {isGameFavorited[item.id] ? (
+                <img
+                  src={solidheart}
+                  alt=""
+                  width={30}
+                  className="animate-jump animate-once animate-delay-100"
+                />
+              ) : (
+                <img src={outlineheart} alt="" width={30} />
+              )}
+            </button>
+          </div>
+
+          <div
+            id="cat_rating"
+            className=" pt-[16px] pb-[15px] flex flex-wrap items-center justify-between"
+          >
+            <div className="flex items-center flex-wrap  gap-2">
+              <button
+                className="bg-[#435359] px-[10px] py-[2px] rounded-full 
+                       border-[0.5px]
+                       border-white text-white text-[10px] font-marcellus"
+              >
+                {genre}
+              </button>
+            </div>
+            <div className="flex items-center text-[15px] gap-2 ">
+              {Math.floor(rating * 10) / 10}
+              <Rating value={Math.trunc(rating)} readonly />
+            </div>
+          </div>
+          <p className="text-[24px] font-bold ">{label}</p>
+
+          <div className="flex justify-between py-[15px]">
+            <Button
+              size="sm"
+              className="bg-[#2D7E91] flex items-center gap-2  "
+              onClick={() => handleClick(item)}
+            >
+              {" "}
+              <img src={cart} alt="" width={19} />
+              Add to cart
+            </Button>
+
+            <Button
+              size="sm"
+              className="bg-transparent border-[1px] font-thin border-[#6DC849]  text-[#6DC849]"
+            >
+              <span>&#8377;</span> {price}
+            </Button>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
 export default GamesCard;
-
-/*
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Typography,
-  Tooltip,
-  Rating,
-} from "@material-tailwind/react";
-
-import { Spinner } from "@material-tailwind/react";
-
-import { useGetGamesQuery } from "../../services/RAWG";
-import React from "react";
-import { Link } from "react-router-dom";
-
-const GamesCard = () => {
-  const { data, isFetching } = useGetGamesQuery();
-  console.log("Game Data", data?.results);
-  if (isFetching) {
-    return (
-      <Spinner className="flex items-center justify-center h-16 w-16 text-gray-300/50" />
-    );
-  }
-  return (
-    <div className="p-9 items-center justify-center grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-      {data?.results?.map((item) => (
-        <Link to={`/games/${item.id}`}>
-          <div className="overflow-hidden rounded-xl">
-            <img
-              src={item.background_image}
-              alt="profile-picture"
-              className="hover:scale-125 transition  rounded-xl duration-500 cursor-pointer"
-            />
-
-            <div
-              className=" flex items-center text-center justify-center  bottom-0 
-             rounded-xl  shadow-lg shadow-black/5  backdrop-blur-sm"
-            >
-              <div>
-                <Typography variant="h5" color="white">
-                  {item.name}
-                </Typography>
-                <Typography color="gray" className="mt-2 font-normal">
-                  <Rating value={Math.trunc(item.rating)} readonly />
-                  <div className="flex items-center justify-center gap-2 font-bold text-white">
-                    {Math.floor(item.rating * 10) / 10}
-                  </div>
-                </Typography>
-              </div>
-            </div>
-
-            {/* <CardBody className="text-center ">
-            <Typography variant="h5" color="white" className="mb-2 ">
-              {item.name}
-              </Typography>
-            <Typography color="white" className="font-medium">
-              <Rating value={Math.trunc(item.rating)} readonly />
-              <div className="flex items-center justify-center gap-2 font-bold text-blue-gray-500">
-                {Math.floor(item.rating * 10) / 10}
-              </div>
-              </Typography>
-          </CardBody> */
-//           </div>
-//         </Link>
-//       ))}
-//     </div>
-//   );
-// };
-
-// export default GamesCard;*/

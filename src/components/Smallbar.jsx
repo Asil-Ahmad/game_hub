@@ -15,12 +15,12 @@ const Smallbar = () => {
     <header className="absolute z-10 w-full">
       <nav className=" w-full flex  ">
         <div className=" w-full flex p-4  rounded-2xl justify-between items-center max-container ">
-          <a
-            href="/products"
+          <Link
+            to="/games"
             className=" transition hover:scale-75 items-center  bg-black/50 justify-center flex  p-1 rounded-full"
           >
-          <img src={Back} alt=""  width={20} /> 
-          </a>
+            <img src={Back} alt="" width={20} />
+          </Link>
 
           <div className="px-2  ">
             <Menu>
@@ -41,12 +41,6 @@ const Smallbar = () => {
                 </svg>
               </MenuHandler>
               <MenuList className="outline-none   ">
-                <Input
-                  label="Search"
-                  containerProps={{
-                    className: "mb-4",
-                  }}
-                />
                 {navLinks.map((item) => (
                   <NavLink
                     to={item.href}
@@ -65,9 +59,9 @@ const Smallbar = () => {
 
                 <NavLink
                   className="bg-black flex items-center justify-center font-marcellus rounded-xl p-2 text-[18px] text-white mt-2"
-                  to="/register"
+                  to="/"
                 >
-                  Sign Up
+                  Logout
                 </NavLink>
               </MenuList>
             </Menu>
